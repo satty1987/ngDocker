@@ -1,0 +1,62 @@
+<div class="container-fluid  pb-5">
+  <div class="row">
+
+    <div class="col-md-9 d-flex  bg-white p-4">
+      <div class="row  mt-4" *ngIf="filterCountries">
+        <div class="col-md-9 ">
+          <h3 class="mt-2">News Sources</h3>
+        </div>
+        <div class="col-sm-3" >
+
+          <mat-form-field>
+            <mat-select placeholder="Sort News By Country" [formControl]="sorting" (selectionChange)="sortingNews()">
+              <mat-option *ngFor="let items of filterCountries" [value]="items">
+                {{codeList[items]}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 d-flex " *ngFor="let item of sourceView">
+          <div class="card mb-0 p-3 border">
+            <div class="card-header pb-0">
+              <h4 class="card-title">{{item.name}}</h4>
+              <p class="card-category small">Category : <span class="text-capitalize">{{item.category}} </span> </p>
+            </div>
+            <div class="card-body">
+              {{item.description}}
+            </div>
+
+            <div class="card-footer border-top">
+              <div class="price">
+                <a routerLink="/news/{{item.id}}"> View Top News</a>
+              </div>
+              <div class="stat">
+                <a href="{{item.url}}" target="_blank"> Web link</a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 pr-0 ">
+        <div class="row justify-content-end  ">
+            <div class="col-11 mr-2 bg-white p-4 serviceProvider">
+
+                <h3 class="mt-2">Category</h3>
+
+                <ul class="list-group list-group-flush">
+                  <li *ngFor="let item of sourceView" class="list-group-item border-bottom">  
+                      <a routerLink="/news/{{item.id}}">  {{item.name}} </a></li>
+                </ul>
+
+ 
+          
+          </div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>

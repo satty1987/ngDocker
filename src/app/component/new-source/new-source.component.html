@@ -1,0 +1,48 @@
+<div class="container-fluid bg-white">
+  <div class="row">
+      <div class="col-sm-8 " *ngIf="sourcesData.length>0">
+        <h3> {{sourcesData[0].source.name}} Top Heading</h3> 
+      
+    <!-- <div class="col-sm-6 mt-1 d-flex " *ngFor="let item of sourcesData">
+        <div class="card mb-0 p-3 border">
+            <div class="card-header pb-0">
+              <h4 class="card-title">{{item.title}}</h4>
+              <p class="card-category small">Author : <span class="text-capitalize">{{item.author}} </span> </p>
+            </div>
+            <div class="card-body">
+              {{item.description}}
+            </div>
+    
+            <div class="card-footer border-top">
+                <div class="price">
+                    <a href="{{item.url}}" target="_blank"> Read Full News</a>
+              </div>
+              <div class="stat">
+                {{item.publishedAt |  date: 'dd/MM/yyyy'}}
+              </div>
+            </div>
+          </div>
+    </div> -->
+    <div class="row">
+
+    <div class="col-sm-6 mt-1 d-flex card" *ngFor="let item of sourcesData">
+      <div class="media">
+        <span class="imgsrc">
+          <img src="{{item.urlToImage ? item.urlToImage : 'http://placehold.jp/24/cccccc/ffffff/150x84.png?text='+sourcesData[0].source.name}}" class="mr-3">
+        </span>
+        <div class="media-body ">
+          <h6 class="mt-0 mb-1 font-weight-bold">
+            <a href="{{item.url}}" target="_blank" >{{item.title}}</a></h6>
+          <span class="card-category small line20">Published : <span class="text-capitalize">
+              {{item.publishedAt |  date: 'dd/MM/yyyy'}} </span> </span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-sm-4 bg-white-smoke" >
+    Dta
+  </div>
+
+    </div>
+    </div>

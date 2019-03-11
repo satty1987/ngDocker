@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3 mt-5">
+
+            <mat-card class="p-5">
+                {{counter}}%
+                <mat-progress-bar mode="determinate" [value]="counter"></mat-progress-bar>
+
+                <h2>Login Form</h2>
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Username" value="Sushi">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Password" type="password" value="Sushi">
+                    </mat-form-field>
+                    <section class="w-100 mb-3">
+                        <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox"
+                                    value=""> Subscribe to newsletter <span class="form-check-sign"><span class="check"></span></span></label></div>
+                    </section>
+
+                    <button mat-raised-button class="btn btn-primary">
+                        Primary
+                    </button>
+
+                    <section class="w-100 p-3 text-center border-top mt-3">
+                        <button mat-raised-button class="btn btn-primary" matTooltip="Info about the action"
+                            matTooltipPosition="above" (click)="loginWithOkta();$event.preventDefault()" type="submit">
+                            Login With Okta
+                        </button></section>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
