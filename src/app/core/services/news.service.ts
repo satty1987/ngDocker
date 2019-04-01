@@ -31,6 +31,10 @@ export class NewsService {
         return this.apiCacheRequest(sources);
     }
 
+    fakeRequest() {
+       const sources =  'https://jsonplaceholder.typicode.com/posts';
+        return this.apiCacheRequest(sources);
+    }
      apiCacheRequest(url) {
         const cacheResponse = this.responseCache.get(url);
         if (cacheResponse) {

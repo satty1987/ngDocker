@@ -17,6 +17,7 @@ import { NewSourceComponent } from './component/new-source/new-source.component'
 
 import { HttpConfigInterceptor} from './core/services/http-interceptor';
 import { LoaderComponent } from './component/loader/loader.component';
+import { LazyLoadDirective } from './core/pipes/lazy-load.pipe';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoaderComponent } from './component/loader/loader.component';
     LoginComponent,
     NewComponent,
     NewSourceComponent,
-    LoaderComponent
+    LoaderComponent,
+    LazyLoadDirective
   ],
   imports: [
     BrowserModule,

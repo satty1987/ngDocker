@@ -1,61 +1,38 @@
-<div class="container-fluid">
+
+<div class="container-fluid" id="contentToConvert">
   <div class="row">
     <div class="col-12">
 
-      <div class="card">
+      <div class="card mt-0">
    
         <div class="card-body">
+        <h3>User Info Report</h3>  
+        <p><strong>Report Owner : </strong>Satnam Singh</p>
+        <p><strong>Report Date : </strong>11/1/2019</p>
+
           <div class="table-responsive">
-            <table class="table">
+            <table class="table" >
+
               <thead class="text-primary">
                 <tr>
                   <!---->
-                  <th class="ng-star-inserted">Name</th>
-                  <th class="ng-star-inserted">Country</th>
-                  <th class="ng-star-inserted">City</th>
-                  <th class="ng-star-inserted">Salary</th>
+                  <th class="ng-star-inserted">Id</th>
+                  <th class="ng-star-inserted">Title</th>
+                  <th class="ng-star-inserted">Body</th>
                 </tr>
               </thead>
               <tbody>
                 <!---->
-                <tr class="ng-star-inserted">
-                  <td>Dakota Rice</td>
-                  <td>Niger</td>
-                  <td>Oud-Turnhout</td>
-                  <td class="text-primary">$36,738</td>
+                <tr *ngFor="let item of list">
+                  <td>{{item.id}}</td>
+                  <td>{{item.title}}</td>
+                  <td >{{item.body}}</td>
                 </tr>
-                <tr class="ng-star-inserted">
-                  <td>Minerva Hooper</td>
-                  <td>Curaçao</td>
-                  <td>Sinaai-Waas</td>
-                  <td class="text-primary">$23,789</td>
-                </tr>
-                <tr class="ng-star-inserted">
-                  <td>Sage Rodriguez</td>
-                  <td>Netherlands</td>
-                  <td>Baileux</td>
-                  <td class="text-primary">$56,142</td>
-                </tr>
-                <tr class="ng-star-inserted">
-                  <td>Philip Chaney</td>
-                  <td>Korea, South</td>
-                  <td>Overland Park</td>
-                  <td class="text-primary">$38,735</td>
-                </tr>
-                <tr class="ng-star-inserted">
-                  <td>Doris Greene</td>
-                  <td>Malawi</td>
-                  <td>Feldkirchen in Kärnten</td>
-                  <td class="text-primary">$63,542</td>
-                </tr>
-                <tr class="ng-star-inserted">
-                  <td>Mason Porter</td>
-                  <td>Chile</td>
-                  <td>Gloucester</td>
-                  <td class="text-primary">$78,615</td>
-                </tr>
+              
               </tbody>
             </table>
+
+            
           </div>
         </div>
       </div>
@@ -63,3 +40,6 @@
     </div>
   </div>
 </div>
+<button mat-raised-button class="btn btn-primary" (click)="captureScreen()">
+    Print
+</button>
