@@ -1,0 +1,43 @@
+{
+    "options": {
+      "merge-default-rules": false,
+      "formatter": "html",
+      "output-file": "reports/linters/sass-lint-report.html",
+      "max-warnings": 50
+    },
+    "files": {
+      "include": "**/src/**/*.s+(a|c)ss",
+      "ignore": [
+        "node_modules/**/*.*",
+        "src/app/debug/**/*.*",
+        "reports/linters/sass-lint-report.html"
+      ]
+    },
+    "rules": {
+      "extends-before-mixins": 2,
+      "extends-before-declarations": 2,
+      "placeholder-in-extend": 2,
+      "no-warn": 1,
+      "no-debug": 1,
+      "no-ids": 2,
+      "no-important": 2,
+      "property-sort-order": [
+        0,
+        {
+          "order": [
+            "display",
+            "margin"
+          ],
+          "ignore-custom-properties": true
+        }
+      ],
+      "variable-for-property": [
+        2,
+        {
+          "properties": [
+
+          ]
+        }
+      ]
+    }
+  }

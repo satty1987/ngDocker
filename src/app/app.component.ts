@@ -11,7 +11,7 @@ import { PlatformLocation } from '@angular/common';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'material-ui';
+  public title: string = 'material-ui';
 
   constructor( private router: Router, public location: PlatformLocation ) {}
 

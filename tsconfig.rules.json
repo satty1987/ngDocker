@@ -1,0 +1,31 @@
+{
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "removeComments": true,
+    "baseUrl": "./",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es6"
+    ],
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "custom-rules/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false
+}
