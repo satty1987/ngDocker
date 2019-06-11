@@ -6,7 +6,8 @@
     "start": "ng serve --proxy--config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
-    "lint": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng lint && npm run htmlLint",
+    "lint:html": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng lint && npm run htmlLint",
+    "lint" : "ng lint",
     "e2e": "ng e2e",
     "htmlLint": "node config/htmlLintRule",
     "sonar": "sonar-scanner"
