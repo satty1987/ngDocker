@@ -4,8 +4,7 @@ import html2canvas from 'html2canvas';
 import {NewsService} from '../../core/services/news.service';
 @Component({
   selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  templateUrl: './footer.component.html'
 })
 export class FooterComponent implements OnInit {
 list = [];
@@ -16,8 +15,8 @@ list = [];
     this.list = resp;
     });
   }
-  public captureScreen(){
-  const data = document.getElementById('contentToConvert');
+  public captureScreen() {
+  // const data = document.getElementById('contentToConvert');
   // html2canvas(data).then(canvas => {
   // // Few necessary setting options
   // let imgWidth = 208;

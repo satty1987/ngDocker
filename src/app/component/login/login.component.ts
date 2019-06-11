@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     });
   }
   openDialog(): void {
-    const dialogRef = this.dialog.open(FooterComponent,
+   this.dialog.open(FooterComponent,
       {
         height: '600px',
         width: '980px',

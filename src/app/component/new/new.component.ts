@@ -20,7 +20,7 @@ export class NewComponent implements OnInit {
 
   ngOnInit() {
 
-    if(history.state){
+    if (history.state) {
     console.log(history.state);
     }
     this.newsSvc.getNewsSources().subscribe((response: any) => {

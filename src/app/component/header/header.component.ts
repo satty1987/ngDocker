@@ -21,7 +21,7 @@ isSearchEnable = false;
   toggle() {
     this.showDropdown = !this.showDropdown;
   }
-  showSearch(){
+  showSearch() {
 this.isSearchEnable = ! this.isSearchEnable;
   }
 
