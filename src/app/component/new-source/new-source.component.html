@@ -8,7 +8,7 @@
     <div class="col-sm-12 mt-1 d-flex card" *ngFor="let item of sourcesData">
       <div class="media">
         <span class="imgsrc">
-          <emmg  appLazyLoad  alt='image'  src="{{item.urlToImage ? item.urlToImage : 'http://placehold.jp/24/cccccc/ffffff/150x84.png?text='+sourcesData[0].source.name}}" class="mr-3">
+          <img  appLazyLoad  alt='image'  src="{{item.urlToImage ? item.urlToImage : 'http://placehold.jp/24/cccccc/ffffff/150x84.png?text='+sourcesData[0].source.name}}" class="mr-3">
         </span>
         <div class="media-body ">
           <h6 class="mt-0 mb-1 font-weight-bold">
