@@ -1,3 +1,8 @@
-.footer{
-    color : transparent;
+@media print {
+    body, html, #contentToConvert {
+        width: 100%;
+        margin-top:0%;
+   display:block;
+   height:100%;
+    }
 }

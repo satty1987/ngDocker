@@ -1,37 +1,59 @@
 import {LoaderService} from './loader-service';
-import { Injectable, Injector } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Observable, pipe } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Injectable} from '@angular/core';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse,HttpHeaders } from '@angular/common/http';
+import { Observable, pipe , throwError} from 'rxjs';
+import {SplunkUtilityService} from './splunk.service';
+import { NgxLoggerLevel } from 'ngx-logger';
+import { map, catchError} from 'rxjs/operators';
+
+
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-    constructor(private loaderService: LoaderService) { }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.showLoader();
-        return next.handle(req).pipe(tap((event: HttpEvent<any>) => {
+  private authReq: HttpRequest<any>;
+  private loggerLoad: any;
+  private LOG_LEVEL = ['TRACE', 'DEBUG', 'INFO', 'LOG', 'WARN', 'ERROR', 'FATAL', 'OFF'];
+    constructor(private loaderService: LoaderService, public splunk: SplunkUtilityService) { }
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
+      this.authReq = req;
+      // inject this method thorugh service
+      if (req.url.indexOf('services/collector/event') !== -1) {
+          this.authReq = this._mapLoggingPayload(req);
+          return next.handle(this.authReq).pipe(
+              map(event => {
+                  return event;
+              }),
+              catchError(error => {
+                  return throwError(error);
+              }));
+
+      }
+      return next.handle(this.authReq).pipe(
+        map((event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
-            this.onEnd();
+  
+           this.splunk.logInSplunk(NgxLoggerLevel.LOG, req, event);
 
-            const camelCaseObject = event.body;
-            camelCaseObject.status = 'Success';
-            const modEvent = event.clone({ body: camelCaseObject });
-
-            return modEvent;
+           return event;
           }
-        },
-          (err: any) => {
-            this.onEnd();
-        }));
-      }
+        })
+      );;
+  }
+  _mapLoggingPayload(req: HttpRequest<any>): HttpRequest<any> {
+    let apiName = '';
+    
+    this.authReq = req.clone({
+      body: Object.assign({},
+        {
+          'event': {
 
-    private onEnd(): void {
-        this.hideLoader();
-      }
-      private showLoader(): void {
-        this.loaderService.show();
-      }
-      private hideLoader(): void {
-        this.loaderService.hide();
-      }
+           'name':'satnam',
+           'type': 'singh'
+          }
+        }),
+      setHeaders: { "Authorization": "Splunk 7cdfb086-aaf5-4fc0-b885-9824dce3bdb8" } 
+    });
+    return this.authReq;
+
+  }
 }

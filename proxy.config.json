@@ -10,5 +10,11 @@
     "changeOrigin": true,
     "secure": false,
     "logLevel": "debug"
+  },
+  "/services/collector/event": {
+    "target": "http://localhost:8088/services/collector/event",
+    "changeOrigin": true,
+    "secure": false,
+    "logLevel": "debug"
   }
 }

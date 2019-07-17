@@ -1,36 +1,57 @@
 
-<div class="container-fluid" id="contentToConvert">
+<div class="container-fluid" >
   <div class="row">
     <div class="col-12">
 
       <div class="card mt-0">
+          <button mat-raised-button class="btn btn-primary" (click)="print('contentToConvert')">
+
    
+
+              Print
+          </button>
         <div class="card-body">
         <h3>User Info Report</h3>  
         <p><strong>Report Owner : </strong>Satnam Singh</p>
         <p><strong>Report Date : </strong>11/1/2019</p>
 
-          <div class="table-responsive">
-            <table class="table" >
+          <div class="table-responsive" id="contentToConvert">
+
+              <div class="col-md-12 d-flex " *ngFor="let item of list">
+                  <div class="card mb-0 p-3 border">
+                   
+                      <h4>{{item.title}}</h4>
+                 <p>{{item.body}}</p>
+
+                 <div class="page-break"></div>
+
+                  </div>
+
+        
+        
+                </div>
+
+            <!-- <table class="table"  >
 
               <thead class="text-primary">
                 <tr>
-                  <!---->
                   <th class="ng-star-inserted">Id</th>
                   <th class="ng-star-inserted">Title</th>
                   <th class="ng-star-inserted">Body</th>
                 </tr>
               </thead>
               <tbody>
-                <!---->
+               
                 <tr *ngFor="let item of list">
                   <td>{{item.id}}</td>
                   <td>{{item.title}}</td>
                   <td >{{item.body}}</td>
+          
                 </tr>
               
               </tbody>
-            </table>
+
+            </table> -->
 
             
           </div>
@@ -40,6 +61,5 @@
     </div>
   </div>
 </div>
-<button mat-raised-button class="btn btn-primary" (click)="captureScreen()">
-    Print
-</button>
+
+<button printSectionId="contentToConvert" ngxPrint>print</button> 

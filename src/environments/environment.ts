@@ -2,9 +2,25 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { NgxLoggerLevel } from 'ngx-logger';
+
+
 export const environment = {
-  production: false
+  production: false,
+  dev : true,
+  SPLUNK_LOGGING: NgxLoggerLevel.LOG,
+  firebaseConfig : {
+    apiKey: "AIzaSyC81gNEyjeVdz9ZNvKCg_iW-Chzysbp40M",
+    authDomain: "ng-logger-d9613.firebaseapp.com",
+    databaseURL: "https://ng-logger-d9613.firebaseio.com",
+    projectId: "ng-logger-d9613",
+    storageBucket: "",
+    messagingSenderId: "839804656684",
+    appId: "1:839804656684:web:62fb9ecdf04d4ad0"
+  }
+
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

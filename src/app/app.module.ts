@@ -18,6 +18,12 @@ import { NewSourceComponent } from './component/new-source/new-source.component'
 import { HttpConfigInterceptor} from './core/services/http-interceptor';
 import { LoaderComponent } from './component/loader/loader.component';
 import { LazyLoadDirective } from './core/pipes/lazy-load.pipe';
+import {NgxPrintModule} from 'ngx-print';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { environment } from '../environments/environment';
+import {SplunkUtilityService} from './core/services/splunk.service';
+
+
 
 
 @NgModule({
@@ -40,16 +46,25 @@ import { LazyLoadDirective } from './core/pipes/lazy-load.pipe';
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPrintModule,
+    LoggerModule.forRoot({
+      serverLoggingUrl: '/services/collector/event',     // To Log in Server Api Calls
+      level: environment.production ? NgxLoggerLevel.LOG :
+        environment.dev ? NgxLoggerLevel.DEBUG : NgxLoggerLevel.INFO,
+      serverLogLevel: environment.SPLUNK_LOGGING
+    })
   ],
   entryComponents: [
     FooterComponent
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }, SplunkUtilityService
 ]
 ,
   bootstrap: [AppComponent],
-  exports: [HeaderComponent, FooterComponent, HomeComponentComponent, OktaCallbackComponent, NewComponent, LoaderComponent]
+  exports: [HeaderComponent, FooterComponent, 
+    HomeComponentComponent, OktaCallbackComponent, 
+    NewComponent, LoaderComponent]
 })
 export class AppModule { }
